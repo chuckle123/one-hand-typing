@@ -1,5 +1,10 @@
-// Complile using the following command line:
-//    gcc -Wall -o oht oht.c -framework ApplicationServices
+/**
+ * Complile using the following command line:
+ * gcc -Wall -o oht oht.c -framework ApplicationServices
+ *
+ * The source code used as the base for this application can be found at
+ * http://osxbook.com/book/bonus/chapter2/alterkeys/
+ */
 
 #include "oht.h"
 
@@ -35,111 +40,11 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
   // The incoming keycode.
   CGKeyCode keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
-  // Caps lock is mapped to f19 which has the key code 50
-  if (type == kCGEventKeyUp && keycode == (CGKeyCode) 0x50) {
-    isCapsPressed = false;
-  } else if (type == kCGEventKeyDown && keycode == (CGKeyCode) 0x50) {
-    isCapsPressed = true;
-  }
+  // Caps lock is mapped to f19 which has the key code 80
+  if (keycode == 80) isCapsPressed = (type == kCGEventKeyDown);
 
   if (isCapsPressed) {
-    // asdfg row
-    // a -> ;
-    if (keycode == (CGKeyCode) _a) {
-      keycode = (CGKeyCode) _COLON;
-    }
-    // s -> l
-    else if (keycode == (CGKeyCode) _s) {
-      keycode = (CGKeyCode) _l;
-    }
-    // d -> k
-    else if (keycode == (CGKeyCode) _d) {
-      keycode = (CGKeyCode) _k;
-    }
-    // f -> j
-    else if (keycode == (CGKeyCode) _f) {
-      keycode = (CGKeyCode) _j;
-    }
-    // g -> h
-    else if (keycode == (CGKeyCode) _g) {
-      keycode = (CGKeyCode) _h;
-    }
-
-    // qwerty row
-    // q -> p
-    if (keycode == (CGKeyCode) _q) {
-      keycode = (CGKeyCode) _p;
-    }
-    // w -> o
-    else if (keycode == (CGKeyCode) _w) {
-      keycode = (CGKeyCode) _o;
-    }
-    // e -> i
-    else if (keycode == (CGKeyCode) _e) {
-      keycode = (CGKeyCode) _i;
-    }
-    // r -> u
-    else if (keycode == (CGKeyCode) _r) {
-      keycode = (CGKeyCode) _u;
-    }
-    // t -> y
-    else if (keycode == (CGKeyCode) _t) {
-      keycode = (CGKeyCode) _y;
-    }
-
-    // zxcvb row
-    // z -> .
-    if (keycode == (CGKeyCode) _z) {
-      keycode = (CGKeyCode) _PERIOD;
-    }
-    // x -> ,
-    else if (keycode == (CGKeyCode) _x) {
-      keycode = (CGKeyCode) _COMMA;
-    }
-    // c -> m
-    else if (keycode == (CGKeyCode) _c) {
-      keycode = (CGKeyCode) _m;
-    }
-    // v -> n
-    else if (keycode == (CGKeyCode) _v) {
-      keycode = (CGKeyCode) _n;
-    }
-
-    // 12345 row
-    // 1 -> 0
-    if (keycode == (CGKeyCode) _1) {
-      keycode = (CGKeyCode) _0;
-    }
-    // 2 -> 9
-    else if (keycode == (CGKeyCode) _2) {
-      keycode = (CGKeyCode) _9;
-    }
-    // 3 -> 8
-    else if (keycode == (CGKeyCode) _3) {
-      keycode = (CGKeyCode) _8;
-    }
-    // 4 -> 7
-    else if (keycode == (CGKeyCode) _4) {
-      keycode = (CGKeyCode) _7;
-    }
-    // 5 -> 6
-    else if (keycode == (CGKeyCode) _5) {
-      keycode = (CGKeyCode) _6;
-    }
-
-    // Special keys
-    // ` -> DELETE
-    else if (keycode == (CGKeyCode) _GRAVE_ACCENT) {
-      keycode = (CGKeyCode) _DELETE;
-    }
-    // SPACE -> RETURN
-    else if (keycode == (CGKeyCode) _SPACE) {
-      keycode = (CGKeyCode) _RETURN;
-    }
-    // TAB -> '
-    else if (keycode == (CGKeyCode) _TAB) {
-      keycode = (CGKeyCode) _SINGLE_QUOTE;
-    }
+    keycode = swapKeys(keycode);
   }
 
   // Set the modified keycode field in the event.
@@ -148,3 +53,37 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
   return event;
 }
 
+// TODO: record which keys I use most and place them towards the top of the if else chain
+CGKeyCode swapKeys(CGKeyCode keycode) {
+  if (isCapsPressed) {
+    // asdfg row
+    if      (keycode == _A) keycode =  _COLON;
+    else if (keycode == _S) keycode =  _L;
+    else if (keycode == _D) keycode =  _K;
+    else if (keycode == _F) keycode = _J;
+    else if (keycode == _G) keycode = _H;
+    // qwerty row
+    else if (keycode == _Q) keycode = _P;
+    else if (keycode == _W) keycode = _O;
+    else if (keycode == _E) keycode = _I;
+    else if (keycode == _R) keycode = _U;
+    else if (keycode == _T) keycode = _Y;
+    // zxcvb row
+    else if (keycode == _Z) keycode = _PERIOD;
+    else if (keycode == _X) keycode = _COMMA;
+    else if (keycode == _C) keycode = _M;
+    else if (keycode == _V) keycode = _N;
+    // 12345 row
+    else if (keycode == _1) keycode = _0;
+    else if (keycode == _2) keycode = _9;
+    else if (keycode == _3) keycode = _8;
+    else if (keycode == _4) keycode = _7;
+    else if (keycode == _5) keycode = _6;
+    // Special keys
+    else if (keycode == _SPACE) keycode = _RETURN;
+    else if (keycode == _TAB) keycode = _SINGLE_QUOTE;
+    else if (keycode == _GRAVE_ACCENT)  keycode = _DELETE;
+  }
+
+  return keycode;
+}
