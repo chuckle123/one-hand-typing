@@ -35,7 +35,7 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
   // The incoming keycode.
   CGKeyCode keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
-  // Caps lock is mapped to f19 which has the key code 0x80
+  // Caps lock is mapped to f19 which has the key code 50
   if (type == kCGEventKeyUp && keycode == (CGKeyCode) 0x50) {
     isCapsPressed = false;
   } else if (type == kCGEventKeyDown && keycode == (CGKeyCode) 0x50) {
@@ -132,9 +132,9 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
     else if (keycode == (CGKeyCode) _GRAVE_ACCENT) {
       keycode = (CGKeyCode) _DELETE;
     }
-    // SPACE -> ENTER
+    // SPACE -> RETURN
     else if (keycode == (CGKeyCode) _SPACE) {
-      keycode = (CGKeyCode) _ENTER;
+      keycode = (CGKeyCode) _RETURN;
     }
     // TAB -> '
     else if (keycode == (CGKeyCode) _TAB) {
