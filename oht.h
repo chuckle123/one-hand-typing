@@ -56,7 +56,7 @@ static const CGKeyCode _GRAVE_ACCENT  = (CGKeyCode) 50;
 static const CGKeyCode _DELETE        = (CGKeyCode) 51;
 static const CGKeyCode _ENTER         = (CGKeyCode) 52;
 static const CGKeyCode _ESCAPE        = (CGKeyCode) 53;
-bool isCapsPressed = false;
+static bool isCapsPressed = false;
 
 int main(void);
 CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon);

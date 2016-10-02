@@ -1,5 +1,5 @@
 /**
- * Complile using the following command line:
+ * Compile using the following command line:
  * gcc -Wall -o oht oht.c -framework ApplicationServices
  *
  * The source code used as the base for this application can be found at

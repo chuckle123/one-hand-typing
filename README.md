@@ -1,24 +1,33 @@
 ##Summary
-This application will allow you to hold down the Caps Lock and mirror the right side of you keyboard to your left.
+This application will allow you to hold down the Caps Lock key and mirror the right side of your keyboard to your left, allowing for you to type one handed.
 
 
 ##How to setup and run?
 
-1. Download [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
+1. Download [Karabiner Elements Github](https://github.com/tekezo/Karabiner-Elements) ([dmg](https://pqrs.org/latest/karabiner-elements-latest.dmg)).
 
-      This application will allow you to do simple key modifications. In my example I modified the Caps Lock key to the F19 key.
+      This application will allow you to do simple key modifications. In my example, I modified the Caps Lock key to the F19 key.
 
-2. Create the configuration file at ~/.karabiner.d/configuration/karabiner.json (Version 0.90.46)
+2. Disable the Caps Lock key.
 
-      You are more than welcome to use my configuration file.
+      Go to System Preferences -> Keyboard -> Modifier Keys... (Keboard Tab). Change the Caps Lock Key drop down menu to No Action.
 
-3. Compile the oht.c file
+3. Follow the directions [here](https://github.com/tekezo/Karabiner-Elements/blob/master/usage/README.md#how-to-configure-karabiner-elements) to create a configuration file - use my configuration file to swap the Caps Lock key with the F19 key (Version 0.90.46 of Karabiner).
 
-      gcc -Wall -o oht oht.c -framework ApplicationServices
+      You can customize the key you map to, but you will need to edit the oht.c file to reflect the changes.
+
+4. Compile the oht.c file.
+
+      `gcc -Wall -o oht oht.c -framework ApplicationServices`
+
+5. Run the out file with root privileges.
+
+      `sudo ./oht`
 
 
 ##Compatibility
-OSX Sierra (10.12)
+macOS Sierra (10.12)
+
 Karabiner Elements (0.90.46)
 
 
