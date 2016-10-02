@@ -6,15 +6,15 @@ This application will allow you to hold down the Caps Lock and mirror the right 
 
 1. Download [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
 
-...This application will allow you to do simple key modifications. In my example I modified the Caps Lock key to the F19 key.
+      This application will allow you to do simple key modifications. In my example I modified the Caps Lock key to the F19 key.
 
 2. Create the configuration file at ~/.karabiner.d/configuration/karabiner.json (Version 0.90.46)
 
-...You are more than welcome to use my configuration file.
+      You are more than welcome to use my configuration file.
 
 3. Compile the oht.c file
 
-...gcc -Wall -o oht oht.c -framework ApplicationServices
+      gcc -Wall -o oht oht.c -framework ApplicationServices
 
 
 ##Compatibility
