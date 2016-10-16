@@ -1,6 +1,8 @@
 ##Summary
 This application will allow you to hold down the Caps Lock key and mirror the right side of your keyboard to your left, allowing for you to type one handed.
 
+![oht keyboard layout](https://cloud.githubusercontent.com/assets/10111341/19418832/52328d00-939a-11e6-969e-542ee74ee85a.jpg)
+
 
 ##How to setup and run?
 
@@ -10,7 +12,7 @@ This application will allow you to hold down the Caps Lock key and mirror the ri
 
 2. Disable the Caps Lock key.
 
-      Go to System Preferences -> Keyboard -> Modifier Keys... (Keboard Tab). Change the Caps Lock Key drop down menu to No Action.
+      Go to System Preferences -> Keyboard -> Modifier Keys... (Keyboard Tab). Change the Caps Lock Key drop down menu to No Action.
 
 3. Follow the directions [here](https://github.com/tekezo/Karabiner-Elements/blob/master/usage/README.md#how-to-configure-karabiner-elements) to create a configuration file - use my configuration file to swap the Caps Lock key with the F19 key (Version 0.90.46 of Karabiner).
 
@@ -24,6 +26,7 @@ This application will allow you to hold down the Caps Lock key and mirror the ri
 
       `sudo ./oht`
 
+6. TIP: Terminal associates the F19 key (the new key Caps Lock is mapped to in my implementation) to the ~ character. To fix this go to Terminal -> Preferences... -> Keyboard Tab (Profiles Header Tab) -> Select the F19 Key binding and set the action to nothing (clear the text box under action)
 
 ##Compatibility
 macOS Sierra (10.12)
