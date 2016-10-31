@@ -53,36 +53,37 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
   return event;
 }
 
-// TODO: record which keys I use most and place them towards the top of the if else chain
 CGKeyCode swapKeys(CGKeyCode keycode) {
   if (isCapsPressed) {
-    // asdfg row
-    if      (keycode == _A) keycode =  _COLON;
-    else if (keycode == _S) keycode =  _L;
-    else if (keycode == _D) keycode =  _K;
-    else if (keycode == _F) keycode = _J;
-    else if (keycode == _G) keycode = _H;
-    // qwerty row
-    else if (keycode == _Q) keycode = _P;
-    else if (keycode == _W) keycode = _O;
-    else if (keycode == _E) keycode = _I;
-    else if (keycode == _R) keycode = _U;
-    else if (keycode == _T) keycode = _Y;
-    // zxcvb row
-    else if (keycode == _Z) keycode = _PERIOD;
-    else if (keycode == _X) keycode = _COMMA;
-    else if (keycode == _C) keycode = _M;
-    else if (keycode == _V) keycode = _N;
-    // 12345 row
-    else if (keycode == _1) keycode = _0;
-    else if (keycode == _2) keycode = _9;
-    else if (keycode == _3) keycode = _8;
-    else if (keycode == _4) keycode = _7;
-    else if (keycode == _5) keycode = _6;
-    // Special keys
-    else if (keycode == _SPACE) keycode = _RETURN;
-    else if (keycode == _TAB) keycode = _SINGLE_QUOTE;
-    else if (keycode == _GRAVE_ACCENT)  keycode = _DELETE;
+    switch(keycode) {
+      // asdfg row
+      case _A:      keycode = _COLON;   break;
+      case _S:      keycode = _L;       break;
+      case _D:      keycode = _K;       break;
+      case _F:      keycode = _J;       break;
+      case _G:      keycode = _H;       break;
+      // qwerty row
+      case _Q:      keycode = _P;       break;
+      case _W:      keycode = _O;       break;
+      case _E:      keycode = _I;       break;
+      case _R:      keycode = _U;       break;
+      case _T:      keycode = _Y;       break;
+      // zxcvb row
+      case _Z:      keycode = _PERIOD;  break;
+      case _X:      keycode = _COMMA;   break;
+      case _C:      keycode = _M;       break;
+      case _V:      keycode = _N;       break;
+      // 12345 row
+      case _1:      keycode = _0;       break;
+      case _2:      keycode = _9;       break;
+      case _3:      keycode = _8;       break;
+      case _4:      keycode = _7;       break;
+      case _5:      keycode = _6;       break;
+      // Special keys
+      case _SPACE: keycode = _RETURN; break;
+      case _TAB: keycode = _SINGLE_QUOTE; break;
+      case _GRAVE_ACCENT: keycode = _DELETE; break;
+    }
   }
 
   return keycode;

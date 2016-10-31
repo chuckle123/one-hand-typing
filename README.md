@@ -20,7 +20,7 @@ This application will allow you to hold down the Caps Lock key and mirror the ri
 
 4. Compile the oht.c file.
 
-      `gcc -Wall -o oht oht.c -framework ApplicationServices`
+      `make`
 
 5. Run the out file with root privileges.
 
