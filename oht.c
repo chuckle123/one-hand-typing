@@ -41,7 +41,11 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
   CGKeyCode keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
   // Caps lock is mapped to f19 which has the key code 80
-  if (keycode == 80) isCapsPressed = (type == kCGEventKeyDown);
+  if (keycode == 80) {
+    isCapsPressed = (type == kCGEventKeyDown);
+
+    return 0;
+  }
 
   if (isCapsPressed) {
     keycode = swapKeys(keycode);
